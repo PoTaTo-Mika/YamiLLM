@@ -1,0 +1,5 @@
+numpy
+torch
+cudnn
+gradio
+transformers
