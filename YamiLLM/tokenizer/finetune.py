@@ -4,7 +4,7 @@ from tokenizers.models import BPE
 from tokenizers.trainers import BpeTrainer
 
 # 加载已有的分词器
-tokenizer = PreTrainedTokenizerFast.from_pretrained("../../checkpoints/tokenizer.json")
+tokenizer = PreTrainedTokenizerFast.from_pretrained("checkpoints/tokenizer.json")
 base_tokenizer = tokenizer.backend_tokenizer
 
 # 准备新的训练数据

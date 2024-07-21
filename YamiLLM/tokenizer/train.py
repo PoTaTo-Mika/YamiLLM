@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer, PreTrainedTokenizerFast
+﻿from transformers import AutoTokenizer, PreTrainedTokenizerFast
 from tokenizers import trainers, Tokenizer, models, normalizers
 from tokenizers.pre_tokenizers import Whitespace
 from tokenizers.processors import TemplateProcessing
@@ -14,7 +14,7 @@ Yami_tokenizer.normalizer = normalizers.NFKC()
 
 trainer = trainers.BpeTrainer(
     special_tokens=["[PAD]", "[UNK]", "[CLS]", "[SEP]", "[MASK]"],
-    vocab_size=150000
+    vocab_size=50000
 )
 
 dataset = load_dataset('text',data_files = 'data.txt')
@@ -43,13 +43,15 @@ fast_tokenizer = PreTrainedTokenizerFast(
     mask_token="[MASK]",
 )
 
-output_dir = "../../checkpoints"
+output_dir = "checkpoints"
+
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 fast_tokenizer.save_pretrained(output_dir)
 
 vocab = fast_tokenizer.get_vocab()
 vocab_file = os.path.join(output_dir, "vocab.json")
+
 with open(vocab_file, 'w', encoding='utf-8') as f:
     json.dump(vocab, f, ensure_ascii=False, indent=2)
 
